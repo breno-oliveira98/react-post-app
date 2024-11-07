@@ -2,13 +2,14 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { Login } from './Pages/Login.jsx'
-import { Post } from './pages/Post.jsx'
-import { Home } from './pages/Home.jsx'
+import { Login } from './Pages/Login.jsx';
+import { Post } from './pages/Post.jsx';
+import { Home } from './pages/Home.jsx';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const router = createBrowserRouter([
   {
-    path: "/login",
+    path: "/",
     element: <Login/>
   },
   {
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
     element: <Post/>
   },
   {
-    path: "/",
+    path: "/home",
     element: <Home/>
   }
 ])
