@@ -8,7 +8,7 @@ import { Home } from './pages/Home.jsx';
 import { Contato } from './pages/Contato.jsx';
 import { Sobre } from './pages/Sobre.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Login } from './Pages/Login.jsx';
+import { Login } from './pages/Login.jsx';
 
 const router = createBrowserRouter([
   {
