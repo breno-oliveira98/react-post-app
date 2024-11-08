@@ -1,4 +1,4 @@
-export const Contato = () => {
+export const Contatos = () => {
     return ( 
         <div>Contato</div>
      );

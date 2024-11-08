@@ -1,10 +1,10 @@
-import { Button, Col, Container, Form, Nav, Navbar, NavDropdown, Row } from "react-bootstrap";
+import { Col, Container, Form, Nav, Navbar, NavDropdown, Row } from "react-bootstrap";
 
 export const Header = () => {
   return (
     <Navbar className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="/home">
+        <Navbar.Brand href="/">
           <img
             alt=""
             src="https://react-bootstrap.netlify.app/img/logo.svg"
@@ -16,7 +16,7 @@ export const Header = () => {
         </Navbar.Brand>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/home">Home</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/post">Post</Nav.Link>
             <Nav.Link href="/contatos">Contatos</Nav.Link>
             <Nav.Link href="/sobre">Sobre</Nav.Link>
