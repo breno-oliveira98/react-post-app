@@ -1,36 +1,30 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-
-import { Post } from './pages/Post.jsx';
-import { Home } from './pages/Home.jsx';
-import { Contatos } from './pages/Contatos.jsx';
-import { Sobre } from './pages/Sobre.jsx';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import './index.css';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Login } from './pages/Login.jsx';
 import { Layout } from './components/Layout/Layout.jsx';
-
+import { routes } from './routes/routes.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Router>
       <Routes>
-        <Route path='/login' element={ <Login/> } />
+        {/* Rota de Login */}
+        <Route path='/login' element={<Login />} />
 
-        {/* Layout é a Rota Pai */}
-        <Route path='/' element={ <Layout/> }> {/* Tag de abertura do Layout */}
+        {/* Rota Pai (Layout) com rotas filhas dentro */}
+        <Route element={<Layout />}>
+          {/* Mapeando as rotas do array "routes" */}
+          {routes.map((route, index) => (
+            <Route key={index} path={route.path} element={route.element} />
+          ))}
+        </Route>
 
-        {/* Rotas Filhas do Layout */}
-        <Route index element={ <Home/> } />
-        <Route path='post' element={ <Post/> } />
-        <Route path='contatos' element={ <Contatos/> } />
-        <Route path='sobre' element={ <Sobre/> } />
-        {/* Rotas Filhas do Layout */}
-        
-        </Route>                               {/* Tag de fechamento do Layout */}
-        
+        {/* Rota para qualquer página não encontrada */}
+        <Route path="*" element={<Navigate to="/home" />} />
       </Routes>
     </Router>
-  </StrictMode>,
-)
+  </StrictMode>
+);
