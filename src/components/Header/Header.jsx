@@ -1,4 +1,6 @@
 import { Col, Container, Form, Nav, Navbar, Row } from "react-bootstrap";
+import { routes } from "../../routes/routes";
+import { Navigate } from "react-router-dom";
 
 export const Header = () => {
   return (
@@ -23,17 +25,25 @@ export const Header = () => {
           </Nav>
         </Navbar.Collapse>
         <Form inline>
-        <Row>
-          <Col xs="auto">
-            <Form.Control
-              type="text"
-              placeholder="Search"
-              className=" mr-sm-2"
-              onChange={(e) => console.log(e.target.value)}
-            />
-          </Col>
-        </Row>
-      </Form>
+          <Row>
+            <Col xs="auto">
+              <>
+                <input
+                  className="form-control"
+                  list="datalistOptions"
+                  id="exampleDataList"
+                  placeholder="Acesso rápido"
+                />
+                <datalist id="datalistOptions">
+                  {routes.map((option, index) => (
+                  <option key={index}>{option.path.replace("/", "").toLocaleUpperCase()}</option>
+
+                  ))}
+                </datalist>
+              </>
+            </Col>
+          </Row>
+        </Form>
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
             Signed in as: <a href="#login">Mark Otto</a>
