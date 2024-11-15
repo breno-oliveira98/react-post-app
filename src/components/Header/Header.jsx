@@ -1,6 +1,6 @@
-import { Col, Container, Form, Nav, Navbar, Row } from "react-bootstrap";
+import { Col, Container, Form, ListGroup, Nav, Navbar, Row } from "react-bootstrap";
 import { routes } from "../../routes/routes";
-import { Navigate } from "react-router-dom";
+import AutoCompleteInput from "../autocomplete/AutoComplete";
 
 export const Header = () => {
   return (
@@ -28,18 +28,7 @@ export const Header = () => {
           <Row>
             <Col xs="auto">
               <>
-                <input
-                  className="form-control"
-                  list="datalistOptions"
-                  id="exampleDataList"
-                  placeholder="Acesso rápido"
-                />
-                <datalist id="datalistOptions">
-                  {routes.map((option, index) => (
-                  <option key={index}>{option.path.replace("/", "").toLocaleUpperCase()}</option>
-
-                  ))}
-                </datalist>
+                <AutoCompleteInput options={routes}/>
               </>
             </Col>
           </Row>
