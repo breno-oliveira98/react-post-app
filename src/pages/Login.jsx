@@ -1,6 +1,11 @@
 import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
+  const user = {
+    nome: "Breno",
+    tipo: "Administrador"
+  }
+  let key = "Usuário logado"
 const navigate = useNavigate();
   const login = (e) => {
     e.preventDefault();
@@ -12,6 +17,8 @@ const navigate = useNavigate();
     };
 
     if (formValues.email === "admin" && formValues.senha === "123") {
+      localStorage.setItem(key, user.nome)
+      console.log(localStorage)
       navigate("/home");
     } else {
       navigate("/");
