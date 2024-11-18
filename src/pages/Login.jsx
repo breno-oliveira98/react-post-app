@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 export const user = {
   nome: "Breno",
   email: "admin",
@@ -34,8 +34,8 @@ const [isLoggedIn, setIsLoggedIn] = useState(false)
  
 
   return (
-    <main className="form-signin w-100 mt-5 mx-auto d-flex justify-content-center">
-      <form onSubmit={login}>
+    <main className="form-signin w-100 vh-100 border mx-auto d-flex align-items-center justify-content-center">
+      <form id="formLogin" onSubmit={login} className="shadow">
         <div className="text-center">
           <img
             className="mb-4"
@@ -45,9 +45,9 @@ const [isLoggedIn, setIsLoggedIn] = useState(false)
             height="57"
           />
         </div>
-        <h1 className="h3 mb-3 fw-normal text-center">Please sign in</h1>
+        <h1 className="h3 mb-3 fw-normal text-center">Acessar Sistema</h1>
 
-        <div className="form-floating">
+        <div className="form-floating mb-2">
           <input
             type="text"
             name="email"
@@ -55,9 +55,9 @@ const [isLoggedIn, setIsLoggedIn] = useState(false)
             id="floatingInput"
             placeholder="name@example.com"
           />
-          <label for="floatingInput">Email address</label>
+          <label for="floatingInput">Email</label>
         </div>
-        <div className="form-floating">
+        <div className="form-floating mb-2">
           <input
             type="password"
             name="senha"
@@ -65,7 +65,7 @@ const [isLoggedIn, setIsLoggedIn] = useState(false)
             id="floatingPassword"
             placeholder="Password"
           />
-          <label for="floatingPassword">Password</label>
+          <label for="floatingPassword">Senha</label>
         </div>
 
         <div className="form-check text-start my-3">
@@ -76,13 +76,14 @@ const [isLoggedIn, setIsLoggedIn] = useState(false)
             id="flexCheckDefault"
           />
           <label className="form-check-label" for="flexCheckDefault">
-            Remember me
+            Lembrar-me
           </label>
         </div>
         <button className="btn btn-primary w-100 py-2" type="submit">
-          Sign in
+          Entrar
         </button>
-        <p className="mt-5 mb-3 text-body-secondary text-center">© 2017–2024</p>
+        <p className="py-2">Não tem uma conta? <Link to={"/cadastro"}>Cadastre-se</Link></p>
+        <p className="mt-2 mb-3 text-body-secondary text-center">© 2024</p>
       </form>
     </main>
   );

@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Login } from './pages/Login.jsx';
 import { Layout } from './components/Layout/Layout.jsx';
 import { routes } from './routes/routes.jsx';
+import Cadastro from './pages/Cadastro.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -13,6 +14,7 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         {/* Rota de Login */}
         <Route path='/login' element={<Login />} />
+        <Route path='/cadastro' element={<Cadastro />} />
 
         {/* Rota Pai (Layout) com rotas filhas dentro */}
         <Route element={<Layout />}>
