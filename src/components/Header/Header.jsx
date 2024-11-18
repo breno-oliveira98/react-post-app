@@ -57,8 +57,8 @@ export const Header = () => {
           Conectado como: <a href="#login">{userInfo?.nome}</a>
           </Navbar.Text>
           {userInfo && (
-            <span className="text-secondary btn ms-3" onClick={logout}>
-              Logout
+            <span className="text-black btn ms-3 d-flex align-items-center gap-2" onClick={logout}>
+              Sair <i class="bi bi-box-arrow-right text-danger"></i>
             </span>
           )}
         </Navbar.Collapse>
