@@ -1,8 +1,27 @@
 import { Col, Container, Form, ListGroup, Nav, Navbar, Row } from "react-bootstrap";
 import { routes } from "../../routes/routes";
 import AutoCompleteInput from "../autocomplete/AutoComplete";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 export const Header = () => {
+  const navigate = useNavigate()
+  const [userInfo, setUserInfo] = useState(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUserInfo(JSON.parse(storedUser));
+    }
+  }, []);
+
+  const logout = () => {
+    localStorage.removeItem("user");
+    setUserInfo(null)
+    navigate("/login")
+  }
+
   return (
     <Navbar className="bg-body-tertiary">
       <Container>
@@ -35,8 +54,13 @@ export const Header = () => {
         </Form>
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
-            Signed in as: <a href="#login">Breno</a>
+          Conectado como: <a href="#login">{userInfo?.nome}</a>
           </Navbar.Text>
+          {userInfo && (
+            <span className="text-secondary btn ms-3" onClick={logout}>
+              Logout
+            </span>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>

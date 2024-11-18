@@ -1,12 +1,16 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+export const user = {
+  nome: "Breno",
+  email: "admin",
+  senha: "123",
+  tipo: "Administrador"
+}
 
 export const Login = () => {
-  const user = {
-    nome: "Breno",
-    tipo: "Administrador"
-  }
-  let key = "Usuário logado"
+  
 const navigate = useNavigate();
+const [isLoggedIn, setIsLoggedIn] = useState(false)
   const login = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -16,15 +20,18 @@ const navigate = useNavigate();
       senha: formData.get("senha"),
     };
 
-    if (formValues.email === "admin" && formValues.senha === "123") {
-      localStorage.setItem(key, user.nome)
-      console.log(localStorage)
+    if (formValues.email === user.email && formValues.senha === user.senha) {
+      localStorage.setItem("user", JSON.stringify(user));
+      setIsLoggedIn(true)
       navigate("/home");
     } else {
-      navigate("/");
+      setIsLoggedIn(false)
+      navigate("/login");
     }
     console.log("Enviou", formValues);
   };
+
+ 
 
   return (
     <main className="form-signin w-100 mt-5 mx-auto d-flex justify-content-center">
