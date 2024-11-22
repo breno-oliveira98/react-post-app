@@ -8,6 +8,11 @@
   /* background-color: #f9f9f9; */
 }
 
+.dark-theme {
+  background-color: black;
+  color: white;
+}
+
 #cadastroPage .container {
   height: 70vh;
   padding: 2rem;

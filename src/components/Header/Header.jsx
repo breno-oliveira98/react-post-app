@@ -1,13 +1,28 @@
-import { Col, Container, Form, ListGroup, Nav, Navbar, Row } from "react-bootstrap";
+import { Col, Container, Form, Nav, Navbar, Row } from "react-bootstrap";
 import { routes } from "../../routes/routes";
 import AutoCompleteInput from "../autocomplete/AutoComplete";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons'
+import "./Header.css"
 
 
 export const Header = () => {
+  const [isDarkMode, setIsDarkMode] = useState(true)
   const navigate = useNavigate()
   const [userInfo, setUserInfo] = useState(null);
+
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode)
+  }
+  useEffect(() => {
+    if(isDarkMode) {
+      document.body.classList.add('dark-theme');
+    } else {
+      document.body.classList.remove('dark-theme');
+    }
+  }, [isDarkMode])
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -23,7 +38,7 @@ export const Header = () => {
   }
 
   return (
-    <Navbar className="bg-body-tertiary">
+    <Navbar bg={isDarkMode ? 'dark' : ''} data-bs-theme={isDarkMode ? 'dark' : ''} className="bg-body-tertiary mb-3">
       <Container>
         <Navbar.Brand href="/home">
           <img
@@ -44,11 +59,16 @@ export const Header = () => {
           </Nav>
         </Navbar.Collapse>
         <Form inline>
-          <Row>
-            <Col xs="auto">
-              <>
+          <Row className="d-flex align-items-center">
+            <Col xs="auto" className="pt-3">
                 <AutoCompleteInput options={routes}/>
-              </>
+            </Col>
+            <Col xs="auto" >
+            <FontAwesomeIcon 
+            color={isDarkMode ? "blue" : "yellow"}
+            icon={isDarkMode ? faMoon : faSun} 
+            onClick={toggleTheme} 
+            cursor={"pointer"} />
             </Col>
           </Row>
         </Form>
